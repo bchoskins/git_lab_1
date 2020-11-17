@@ -6,8 +6,10 @@ def validate_phone(phone_number):
     Keyword arguments:
     phone_number -- A Pandas Series of phone_numbers as strings
     
+    Returns: A boolean Pandas Series. Valid phone numbers are True. Invalid are False.
     """
+    bool_phone = phone_number.str.contains("^\d{3}[-]?\d{3}[-]?\d{4}")
+    return bool_phone
 
-    return True
-
-print(validate_phone(True))
+numbers = pd.Series(['574-252-6163', '2242344039', 'bad 312-252-6265'])
+print(validate_phone(numbers))
